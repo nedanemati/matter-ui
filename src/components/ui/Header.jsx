@@ -209,8 +209,8 @@ function Header(props) {
           />
         ))}
       </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>
-        Free Estimate
+      <Button variant="contained" color="secondary" className={classes.button} component={Link} to="/estimate">
+        Free Estimateeeeeee
       </Button>
       <Menu
         keepMounted

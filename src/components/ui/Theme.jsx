@@ -4,6 +4,11 @@ const arcBlue = "#0B72B9 !important";
 const arcOrange = "#FFBA60 !important";
 
 export default createTheme({
+  h4: {
+    fontFamily: "Raleway",
+    fontWeight: 500,
+    color: `${arcBlue} !important `,
+  },
   palette: {
     common: {
       blue: `${arcBlue}`,
@@ -36,6 +41,7 @@ export default createTheme({
         color: `${arcBlue} !important `,
         lineHeight: 1.5,
       },
+
       caption: {
         fontSize: "1rem",
         fontWeight: 300,

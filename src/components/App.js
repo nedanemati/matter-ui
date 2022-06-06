@@ -9,6 +9,7 @@ import Services from "./ui/Services";
 import CustomSoftware from "./ui/CustomSoftware.jsx ";
 import About from "./ui/About";
 import Contact from "./ui/Contact";
+import Estimate from "./ui/Estimate";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -29,7 +30,7 @@ function App() {
           <Route path="/revolotion" element={<>revolotion</>} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/estimate" element={<>estimate</>} />
+          <Route path="/estimate" element={<Estimate />} />
         </Routes>
         <Footer value={value} setValue={setValue} setSelectedIndex={setSelectedIndex} selectedIndex={selectedIndex} />
       </BrowserRouter>
