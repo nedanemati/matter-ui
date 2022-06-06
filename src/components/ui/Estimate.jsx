@@ -376,9 +376,7 @@ function Estimate() {
     switch (event.target.id) {
       case "email":
         setEmail(event.target.value);
-        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
-          event.target.value
-        );
+        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value);
 
         if (!valid) {
           setEmailHelper("Invalid email");
@@ -388,9 +386,7 @@ function Estimate() {
         break;
       case "phone":
         setPhone(event.target.value);
-        valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(
-          event.target.value
-        );
+        valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(event.target.value);
 
         if (!valid) {
           setPhoneHelper("Invalid phone");
@@ -448,9 +444,7 @@ function Estimate() {
     const currentlyActive = questions.filter((question) => question.active);
     const activeIndex = currentlyActive[0].id - 1;
     const newSelected = newQuestions[activeIndex].options[id - 1];
-    const previousSelected = currentlyActive[0].options.filter(
-      (option) => option.selected
-    );
+    const previousSelected = currentlyActive[0].options.filter((option) => option.selected);
 
     switch (currentlyActive[0].subtitle) {
       case "Select one":
@@ -500,12 +494,8 @@ function Estimate() {
     console.log(selections);
     if (questions.length > 2) {
       const userCost = questions
-        .filter(
-          (question) => question.title === "How many users do you expect?"
-        )
-        .map((question) =>
-          question.options.filter((option) => option.selected)
-        )[0][0];
+        .filter((question) => question.title === "How many users do you expect?")
+        .map((question) => question.options.filter((option) => option.selected))[0][0];
 
       setUsers(userCost.title);
 
@@ -521,13 +511,8 @@ function Estimate() {
       let newPlatforms = [];
 
       questions
-        .filter(
-          (question) =>
-            question.title === "Which platforms do you need supported?"
-        )
-        .map((question) =>
-          question.options.filter((option) => option.selected)
-        )[0]
+        .filter((question) => question.title === "Which platforms do you need supported?")
+        .map((question) => question.options.filter((option) => option.selected))[0]
         .map((option) => newPlatforms.push(option.title));
 
       setPlatforms(newPlatforms);
@@ -539,14 +524,9 @@ function Estimate() {
       let newFeatures = [];
 
       questions
-        .filter(
-          (question) =>
-            question.title === "Which features do you expect to use?"
-        )
+        .filter((question) => question.title === "Which features do you expect to use?")
         .map((question) => question.options.filter((option) => option.selected))
-        .map((option) =>
-          option.map((newFeature) => newFeatures.push(newFeature.title))
-        );
+        .map((option) => option.map((newFeature) => newFeatures.push(newFeature.title)));
 
       setFeatures(newFeatures);
     }
@@ -555,9 +535,7 @@ function Estimate() {
     if (questions.length > 2) {
       const newCustomFeatures = questions
         .filter((question) => question.title === "What do you need?")
-        .map((question) =>
-          question.options.filter((option) => option.selected)
-        )[0][0].title;
+        .map((question) => question.options.filter((option) => option.selected))[0][0].title;
 
       setCustomFeatures(newCustomFeatures);
     }
@@ -626,17 +604,8 @@ function Estimate() {
   return (
     <Grid container direction="row">
       {/*  */}
-      <Grid
-        item
-        container
-        direction="column"
-        lg
-        alignItems={machesMD ? "center" : undefined}
-      >
-        <Grid
-          item
-          style={{ marginTop: "2em", marginLeft: machesMD ? 0 : "5em" }}
-        >
+      <Grid item container direction="column" lg alignItems={machesMD ? "center" : undefined}>
+        <Grid item style={{ marginTop: "2em", marginLeft: machesMD ? 0 : "5em" }}>
           <Typography variant="h2" align={machesMD ? "center" : undefined}>
             Estimate
           </Typography>
@@ -679,12 +648,7 @@ function Estimate() {
                 >
                   {question.title}
                 </Typography>
-                <Typography
-                  variant="body1"
-                  align="center"
-                  style={{ marginBottom: "2.5" }}
-                  gutterBottom
-                >
+                <Typography variant="body1" align="center" style={{ marginBottom: "2.5" }} gutterBottom>
                   {question.subtitle}
                 </Typography>
               </Grid>
@@ -702,18 +666,11 @@ function Estimate() {
                       borderRadius: 0,
                       marginBottom: machesSM ? "1.5" : 0,
                       textTransform: "none",
-                      backgroundColor: option.selected
-                        ? theme.palette.common.orange
-                        : null,
+                      backgroundColor: option.selected ? theme.palette.common.orange : null,
                     }}
                   >
                     <Grid item style={{ maxWidth: "14em" }}>
-                      <Typography
-                        variant="h6"
-                        align="center"
-                        gutterBottom
-                        style={{ marginBottom: "1em" }}
-                      >
+                      <Typography variant="h6" align="center" gutterBottom style={{ marginBottom: "1em" }}>
                         {option.title}
                       </Typography>
                       <Typography variant="caption" align="center">
@@ -721,11 +678,7 @@ function Estimate() {
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <img
-                        src={option.icon}
-                        alt={option.iconAlt}
-                        className={classes.icon}
-                      />
+                      <img src={option.icon} alt={option.iconAlt} className={classes.icon} />
                     </Grid>
                   </Grid>
                 ))}
@@ -733,36 +686,15 @@ function Estimate() {
             </React.Fragment>
           ))}
 
-        <Grid
-          item
-          container
-          justifyContent="space-between"
-          style={{ width: "18em", marginTop: "3em" }}
-        >
+        <Grid item container justifyContent="space-between" style={{ width: "18em", marginTop: "3em" }}>
           <Grid item>
-            <IconButton
-              disabled={navigationPreviousDisabled()}
-              onClick={previousQuestion}
-            >
-              <img
-                src={
-                  navigationPreviousDisabled() ? backArrowDisabled : backArrow
-                }
-                alt="previos question"
-              />
+            <IconButton disabled={navigationPreviousDisabled()} onClick={previousQuestion}>
+              <img src={navigationPreviousDisabled() ? backArrowDisabled : backArrow} alt="previos question" />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton
-              onClick={nextQuestion}
-              disabled={navigationNextDisabled()}
-            >
-              <img
-                src={
-                  navigationNextDisabled() ? forwardArrowDisabled : forwardArrow
-                }
-                alt="next question"
-              />
+            <IconButton onClick={nextQuestion} disabled={navigationNextDisabled()}>
+              <img src={navigationNextDisabled() ? forwardArrowDisabled : forwardArrow} alt="next question" />
             </IconButton>
           </Grid>
         </Grid>
@@ -800,14 +732,8 @@ function Estimate() {
       >
         <Grid container justifyContent="center"></Grid>
         <DialogContent>
-          <Grid
-            item
-            style={{ marginTop: "1em", marginBottom: machesMD ? 0 : "5em" }}
-          >
-            <Typography
-              variant="h2"
-              alignItems={machesMD ? "center" : undefined}
-            >
+          <Grid item style={{ marginTop: "1em", marginBottom: machesMD ? 0 : "5em" }}>
+            <Typography variant="h2" alignItems={machesMD ? "center" : undefined}>
               Estimate
             </Typography>
           </Grid>
@@ -849,11 +775,7 @@ function Estimate() {
                   />
                 </Grid>
               </Grid>
-              <Grid
-                item
-                style={{ maxWidth: machesSM ? "100%" : "20em" }}
-                mb={3}
-              >
+              <Grid item style={{ maxWidth: machesSM ? "100%" : "20em" }} mb={3}>
                 <TextField
                   label="message"
                   className={classes.message}
@@ -873,13 +795,11 @@ function Estimate() {
                     {platforms.length > 0
                       ? `for ${
                           //if only web application is selected...
-                          platforms.indexOf("Web Application") > -1 &&
-                          platforms.length === 1
+                          platforms.indexOf("Web Application") > -1 && platforms.length === 1
                             ? //then finish sentence here
                               "a Web Application."
                             : //otherwise, if web application and another platform is selected...
-                            platforms.indexOf("Web Application") > -1 &&
-                              platforms.length === 2
+                            platforms.indexOf("Web Application") > -1 && platforms.length === 2
                             ? //then finish the sentence here
                               `a Web Application and an ${platforms[1]}.`
                             : //otherwise, if only one platform is selected which isn't web application...
@@ -900,9 +820,8 @@ function Estimate() {
                   </span>
                 </Typography>
                 <Typography variant="body1" paragraph>
-                  Fill out your name, number, and email, place your request, and
-                  we’ll get back to you with details moving forward and a final
-                  price.
+                  Fill out your name, number, and email, place your request, and we’ll get back to you with details
+                  moving forward and a final price.
                 </Typography>
               </Grid>
             </Grid>
@@ -936,14 +855,9 @@ function Estimate() {
                           : //otherwise, if there are three or more features...
                             features
                               //filter out the very last feature...
-                              .filter(
-                                (feature, index) =>
-                                  index !== features.length - 1
-                              )
+                              .filter((feature, index) => index !== features.length - 1)
                               //and for those features return their name...
-                              .map((feature, index) => (
-                                <span key={index}>{`${feature}, `}</span>
-                              ))
+                              .map((feature, index) => <span key={index}>{`${feature}, `}</span>)
                         : null}
                       {features.length > 2
                         ? //...and then finally add the last feature with 'and' in front of it
@@ -962,11 +876,7 @@ function Estimate() {
                   </Grid>
                 </Grid>
                 <Grid item mt={3}>
-                  <Button
-                    onClick={sendEstimate}
-                    variant="contained"
-                    className={classes.estimateButton}
-                  >
+                  <Button onClick={sendEstimate} variant="contained" className={classes.estimateButton}>
                     {loading ? (
                       <CircularProgress />
                     ) : (
@@ -978,16 +888,8 @@ function Estimate() {
                   </Button>
                 </Grid>
 
-                <Grid
-                  item
-                  mt={3}
-                  style={{ marginBottom: machesSM ? "5em" : 0 }}
-                >
-                  <Button
-                    style={{ fontWeight: 300 }}
-                    color="primary"
-                    onClick={() => setDialogOpen(false)}
-                  >
+                <Grid item mt={3} style={{ marginBottom: machesSM ? "5em" : 0 }}>
+                  <Button style={{ fontWeight: 300 }} color="primary" onClick={() => setDialogOpen(false)}>
                     Cancel
                   </Button>
                 </Grid>
@@ -997,7 +899,7 @@ function Estimate() {
         </DialogContent>
       </Dialog>
       <Snackbar
-        en={alert.open}
+        open={alert.open}
         ContentProps={{
           style: {
             backgroundColor: alert.color,
