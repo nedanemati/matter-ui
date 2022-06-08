@@ -10,6 +10,7 @@ import CustomSoftware from "./ui/CustomSoftware.jsx ";
 import About from "./ui/About";
 import Contact from "./ui/Contact";
 import Estimate from "./ui/Estimate";
+import MobileApps from "./ui/MobileApps";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -25,7 +26,7 @@ function App() {
 
           <Route path="/services" element={<Services />} />
           <Route path="/customsoftware" element={<CustomSoftware />} />
-          <Route path="/mobileapps" element={<>mobileapps</>} />
+          <Route path="/mobileapps" element={<MobileApps />} />
           <Route path="/websites" element={<>websites</>} />
           <Route path="/revolotion" element={<>revolotion</>} />
           <Route path="/about" element={<About />} />
